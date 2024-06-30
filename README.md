@@ -11,7 +11,8 @@ GIVEN a command-line application that accepts user input
 
 WHEN I start the application
 THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
-<!-- TODO: Set up list of option using inquirer -->
+<!-- TODO: - Set up list of option using inquirer
+           - Need a way to link each option selected to a different prompt -->
 WHEN I choose to view all departments
 THEN I am presented with a formatted table showing department names and department ids
 <!-- TODO: Possible GET request, how to show table in terminal?? -->
