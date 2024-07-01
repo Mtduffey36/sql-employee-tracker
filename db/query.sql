@@ -1,0 +1,2 @@
+-- first JOIN will be to attach dept onto roles prolly..
+--  second will be to JOIN departments onto employees...maybe
