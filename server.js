@@ -2,18 +2,14 @@ const inquirer = require('inquirer');
 const express = require('express');
 const { default: ListPrompt } = require('inquirer/lib/prompts/list');
 
-// Import and require Pool (node-postgres)
-// We'll be creating a Connection Pool. Read up on the benefits here: https://node-postgres.com/features/pooling
 const { Pool } = require('pg');
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// Express middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-// Connect to database
 const pool = new Pool(
   {
     user: 'postgres',
@@ -25,6 +21,25 @@ const pool = new Pool(
 )
 
 pool.connect();
+
+// TODO: Will need to create a separate function with a 'query' for all the "view" selections and possibly GET call
+
+
+
+// TODO: Will need to create a separate function with a query for all the "view" selections and possibly GET call
+
+
+
+// TODO: Will need to create a separate function with a POST function for all "add" selections
+
+
+
+// TODO: Will need to create a separate function with a PUT function for all "update" selections
+
+
+
+// TODO: Will need to create a separate function with a DELETE function for all "delete" selection
+    // ^^All these will needs to be in a conditional with relations to prompt questions that are selected
 
 
 
@@ -40,8 +55,7 @@ pool.connect();
 //             'Add department', 
 //             'Add roll;', 
 //             'Add employee', 
-//             'Update employee', 
-//             'View all employees', 
+//             'Update employee',  
 //             'Quit'
 //         ]
 //     }
@@ -108,5 +122,8 @@ pool.connect();
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
   });
+
+
+
   
 
