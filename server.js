@@ -93,13 +93,24 @@ function viewDepartments() {
 
     console.table(result.rows);
     promptUser();
-    
+
   } catch(err) {
-    console.log('Error on Viewing Departments', err);
+    console.log('Error on viewing departments', err);
   }
 };
 
-function viewRoles() {};
+function viewRoles() {
+  try {
+    const result = pool.query(`SELECT roles.title, roles.salary, departments.name
+                                FROM roles
+                                JOIN departments ON roles.department_id = departments.id`);
+    console.table(result.rows);
+    promptUser();
+
+  } catch(err) {
+    console.log('Error on viewing Roles');
+  }
+};
 
 function viewEmployees() {};
 
