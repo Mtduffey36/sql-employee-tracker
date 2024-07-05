@@ -45,6 +45,7 @@ function promptUser() {
         ]
       }
     ]);
+    
     switch(questions.options) {
       case 'View all departments':
         viewDepartments();
@@ -89,7 +90,8 @@ function promptUser() {
 
 function viewDepartments() {
   try {
-    const result = pool.query('SELECT * FROM departments');
+    const result = 
+      pool.query(`SELECT * FROM departments`);
 
     console.table(result.rows);
     promptUser();
@@ -101,18 +103,39 @@ function viewDepartments() {
 
 function viewRoles() {
   try {
-    const result = pool.query(`SELECT roles.title, roles.salary, departments.name
-                                FROM roles
-                                JOIN departments ON roles.department_id = departments.id`);
+    const result =
+      pool.query(`SELECT roles.title, roles.salary, departments.name 
+                  FROM roles 
+                  JOIN departments 
+                  ON roles.department_id = departments.id`);
+     
     console.table(result.rows);
     promptUser();
 
   } catch(err) {
-    console.log('Error on viewing Roles');
+    console.log('Error on viewing roles');
   }
 };
 
-function viewEmployees() {};
+function viewEmployees() {
+  try {
+    const result = 
+    pool.query(`SELECT employees.id 
+                AS employee_id, employees.first_name, employees.last_name, roles.title
+                AS role_title, roles.salary, departments.name
+                AS department_name, 
+                CONCAT(manager.first_name, manager.last_name)
+                AS manager_name FROM employees
+                JOIN role ON employees.roles_id = roles.id
+                JOIN departments ON roles.department_id = departments.id 
+                LEFT JOIN employee AS manager ON employees.manager_id = manager.id`);
+    console.table(result.rows);
+    promptUser();
+
+  } catch(err) {
+    console.log('Error on viewing employees')
+  }
+};
 
 function addDepartment() {};
 
