@@ -27,6 +27,3 @@ CREATE TABLE employees (
     FOREIGN KEY (manager_id) REFERENCES employees(id) ON DELETE SET NULL
 );
 
--- the employee.role_id will take in the department_id when called??? check into this. 
-
--- look up  3NF for this, activity 19-20

@@ -17,8 +17,6 @@ VALUES ('Sales Lead', 100000, 1),
        ('Custodian Lead',90000 ,5), 
        ('Custodian', 65000, 5);
 
-    -- TODO: needs to create employee seed table
-
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
 VALUES  ('Ablerta', 'Bammie', 1, NULL),
         ('Johnny', 'Runner', 2, 1),

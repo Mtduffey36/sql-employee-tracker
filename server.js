@@ -1,6 +1,10 @@
 const inquirer = require('inquirer');
 const express = require('express');
-const { default: ListPrompt } = require('inquirer/lib/prompts/list');
+
+require('dotenv').config();
+const dbName = process.env.DB_NAME;
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
 
 const { Pool } = require('pg');
 
@@ -10,17 +14,17 @@ const app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const pool = new Pool(
-  {
-    user: 'postgres',
-    password: 'globemaster',
-    host: 'localhost',
-    database: 'tracker_db'
-  },
-  console.log(`Connected to the tracker_db database.`)
-)
+// const pool = new Pool(
+//   {
+//     user: 'postgres',
+//     password: 'globemaster',
+//     host: 'localhost',
+//     database: 'tracker_db'
+//   },
+//   console.log(`Connected to the tracker_db database.`)
+// )
 
-pool.connect();
+// pool.connect();
 
 // TODO: Will need to create a separate function with a 'query' for all the "view" selections and possibly GET call
 
