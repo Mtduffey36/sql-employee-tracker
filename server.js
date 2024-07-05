@@ -87,7 +87,17 @@ function promptUser() {
   }
 };
 
-function viewDepartments() {};
+function viewDepartments() {
+  try {
+    const result = pool.query('SELECT * FROM departments');
+
+    console.table(result.rows);
+    promptUser();
+    
+  } catch(err) {
+    console.log('Error on Viewing Departments', err);
+  }
+};
 
 function viewRoles() {};
 
