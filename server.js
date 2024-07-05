@@ -8,26 +8,26 @@ const dbPassword = process.env.DB_PASSWORD;
 
 const { Pool } = require('pg');
 
-const PORT = process.env.PORT || 3001;
-const app = express();
+// const PORT = process.env.PORT || 3001;
+// const app = express();
 
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
+// app.use(express.urlencoded({ extended: false }));
+// app.use(express.json());
 
-// const pool = new Pool(
-//   {
-//     user: 'postgres',
-//     password: 'globemaster',
-//     host: 'localhost',
-//     database: 'tracker_db'
-//   },
-//   console.log(`Connected to the tracker_db database.`)
-// )
+const pool = new Pool(
+  {
+    user: dbUser,
+    password: dbPassword,
+    database: dbName,
+    host: 'localhost',
+    port: 3001 
+  },
+  console.log(`Connected to the tracker_db database.`)
+);
 
 // pool.connect();
 
-// TODO: Will need to create a separate function with a 'query' for all the "view" selections and possibly GET call
-
+// TODO: Will need to create a function to start the program, and prompt questions
 
 
 // TODO: Will need to create a separate function with a query for all the "view" selections and possibly GET call
