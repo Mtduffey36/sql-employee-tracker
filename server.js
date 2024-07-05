@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const express = require('express');
+// const express = require('express');
 
 require('dotenv').config();
 const dbName = process.env.DB_NAME;
@@ -25,43 +25,88 @@ const pool = new Pool(
   console.log(`Connected to the tracker_db database.`)
 );
 
-// pool.connect();
+function promptUser() {
+  try {
+    const questions = inquirer.prompt([
+      {
+        type: 'list',
+        name: 'options',
+        messages: 'Please select from the following menu:',
+        choices: [
+          'View all departments',
+          'View all roles',
+          'View all employees',
+          'Add department',
+          'Add role',
+          'Add employee',
+          'Update employee',
+          'Quit'
 
-// TODO: Will need to create a function to start the program, and prompt questions
+        ]
+      }
+    ]);
+    switch(questions.options) {
+      case 'View all departments':
+        viewDepartments();
+        break;
 
+      case 'View all roles':
+        viewRoles();
+        break;
 
-// TODO: Will need to create a separate function with a query for all the "view" selections and possibly GET call
+      case 'View all employees':
+        viewEmployees();
+        break;
 
+      case 'Add department':
+        addDepartment();
+        break;
 
+      case 'Add roles':
+        addRole();
+        break;
 
-// TODO: Will need to create a separate function with a POST function for all "add" selections
+      case 'Add employee':
+        addEmployee();
+        break;
 
+      case 'Update employee':
+        updateEmployee();
+        break;
 
+      case 'Quit':
+        pool.end();
+        break;
 
-// TODO: Will need to create a separate function with a PUT function for all "update" selections
+      default:
+        console.log('Selection Error');
+        break;
+    }
+  } catch (err) {
+    console.log('Error', err);
+  }
+};
 
+promptUser();
 
-
-// TODO: Will need to create a separate function with a DELETE function for all "delete" selection
-    // ^^All these will needs to be in a conditional with relations to prompt questions that are selected
 
 
 
 // const questions = [
 //     {
-//         type: 'list',
-//         name: 'options',
-//         message: 'Please select from the following menu: ',
-//         choices: [
-//             'View all departments', 
-//             'View all roles', 
-//             'View all employees', 
-//             'Add department', 
-//             'Add roll;', 
-//             'Add employee', 
-//             'Update employee',  
-//             'Quit'
-//         ]
+        // type: 'list',
+        // name: 'options',
+        // message: 'Please select from the following menu: ',
+        // choices: [
+        //     'View all departments', 
+        //     'View all roles', 
+        //     'View all employees', 
+        //     'Add department', 
+        //     'Add roll;', 
+        //     'Add employee', 
+        //     'Update employee',  
+        //     'Quit'
+        // ]
 //     }
 // ];
 
