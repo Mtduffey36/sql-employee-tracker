@@ -37,16 +37,43 @@ prompt([
     choices: choices
   }
 ]).then(({ choice }) => {
-  
-})
+  switch (choice) {
+    case "View all Employees":
+      viewEmployees();
+      break;
+    case "View all Roles":
+      viewTable(`SELECT role.id, title, salary, name AS department
+        FROM role JOIN department ON role.department = department.id`);
+        break;
+      case "View all Departments":
+        viewTable(`SELECT * FROM department`)
+        break;
+      case "Add an Employee":
+        addEmployee();
+        break;
+      case "Add a Role":
+        addRole();
+        break;
+      case "Add a Department":
+        addDepartment();
+        break;
+      case "Update Employee":
+        updateEmployee();
+        break;
+        default:
+          console.log('Invalid choice selected');
+          pool.end();
+          break;
 
-function viewDepartments() {
-}
+  }
+});
 
-function viewRoles() {
-}
 
 function viewEmployees() {
+}
+
+function viewTable() {
+
 }
 
 function addDepartment() {
@@ -65,7 +92,6 @@ function updateEmployee() {
 
 };
 
-promptUser();
 
 
 
