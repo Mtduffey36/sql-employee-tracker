@@ -1,11 +1,13 @@
-INSERT INTO departments ( name )
+DELETE FROM department;
+INSERT INTO department ( name )
 VALUES  ('Sales'),
         ('Finance'),
         ('Engineering'),
         ('Legal'),
         ('Service');
-       
-INSERT INTO roles (title, department_id, salary)
+
+DELETE FROM role;
+INSERT INTO role (title, department, salary)
 VALUES ('Sales Lead', 1, 100000), 
        ('Salesperson', 1, 80000), 
        ('Account Manager', 2, 160000), 
@@ -17,7 +19,8 @@ VALUES ('Sales Lead', 1, 100000),
        ('Custodian Lead', 5, 90000), 
        ('Custodian', 5, 65000);
 
-INSERT INTO employees (first_name, last_name, role_id, manager_id)
+DELETE FROM employee;
+INSERT INTO employee (first_name, last_name, role_id, manager_id)
 VALUES  ('Ablerta', 'Bammie', 1, NULL),
         ('Johnny', 'Runner', 2, 1),
         ('Van', 'Dang', 2, 1),
