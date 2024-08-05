@@ -1,6 +1,6 @@
 const { prompt } = require("inquirer");
 const { Pool } = require("pg");
-const cTable = require("console.table");
+// const cTable = require("console.table");
 
 require('dotenv').config();
 const dbName = process.env.DB_NAME;
@@ -13,7 +13,7 @@ const pool = new Pool(
     password: dbPassword,
     database: dbName,
     host: 'localhost',
-    port: 3001 
+    port: 3002 
   },
   console.log(`Connected to the tracker_db database.`)
 );
